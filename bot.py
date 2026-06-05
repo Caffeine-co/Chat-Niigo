@@ -85,7 +85,7 @@ def import_chat_plugin() -> None:
 
 
 if __name__ == "__main__":
-    ver, env = "v-dev", "dev"
+    ver, env = "vdev", "dev"
 
     init_log()
     logo_startup(ver, env)

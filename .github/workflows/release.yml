@@ -52,7 +52,7 @@ jobs:
         python -c "
         import sys
         content = open('bot.py', encoding='utf-8').read()
-        content = content.replace('ver, env = \"v-dev\", \"dev\"', f'ver, env = \"{sys.argv[1]}\", \"prod\"')
+        content = content.replace('ver, env = \"vdev\", \"dev\"', f'ver, env = \"{sys.argv[1]}\", \"prod\"')
         open('bot.py', 'w', encoding='utf-8').write(content)
         " "${{ steps.version.outputs.version }}"
 
@@ -120,7 +120,7 @@ jobs:
     concurrency:
       group: release-${{ github.ref_name }}
       cancel-in-progress: false
-    if: github.event_name == 'push' && contains(github.ref, 'refs/tags/v-')
+    if: github.event_name == 'push' && contains(github.ref, 'refs/tags/v')
 
     steps:
     - name: Checkout repo
