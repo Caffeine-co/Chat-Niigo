@@ -1,0 +1,52 @@
+{
+  "host": "127.0.0.1",
+  "port": 2500,
+  "enable_help": true,
+  "help_content": "",
+  "llm_model_config": {
+    "api_key": "",
+    "base_url": "https://api.deepseek.com",
+    "model_name": "deepseek-v4-flash",
+    "max_tokens": 4096,
+    "thinking": "enabled",
+    "temperature": 1,
+    "reasoning_effort": "high",
+    "enable_img_multimode": false,
+    "temp_img_dir": "temp",
+    "timeout": 60,
+    "retry_times": 3
+  },
+  "preset_config": {
+    "name": "",
+    "prompt_file": "prompt.md",
+    "tz_offset": 9,
+    "will_config": {
+      "limit": 100.0,
+      "base_per_msg": 5.0,
+      "increase_per_at": 50.0,
+      "increase_per_reply": 25.0,
+      "decrease_after_send": 75.0,
+      "time_coefficient": {
+        "wee_hours": 1.0,
+        "matinal": 1.0,
+        "morning": 1.0,
+        "midday": 1.0,
+        "afternoon": 1.0,
+        "twilight": 1.0,
+        "evening": 1.0,
+        "midnight": 1.0
+      }
+    }
+  },
+  "bot_admins": [],
+  "group_chat_config": {
+    "enable": true,
+    "msg_db": "group_msg.db",
+    "max_msg_reserve_num": 50,
+    "memory_db": "group_memory.db",
+    "run_mode": "whitelist",
+    "blacklists": [],
+    "whitelists": []
+  },
+  "user_blacklists": []
+}
