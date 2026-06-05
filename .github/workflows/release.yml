@@ -12,16 +12,10 @@ jobs:
       matrix:
         include:
           - os: windows-latest
-            arch: amd64
             name: windows-x64
           - os: ubuntu-latest
-            arch: amd64
             name: linux-amd64
-          - os: ubuntu-latest
-            arch: arm64
-            name: linux-arm64
           - os: macos-latest
-            arch: arm64
             name: macos-arm64
     defaults:
       run:
@@ -34,15 +28,12 @@ jobs:
         fetch-depth: 0
 
     - name: Set up Python
-      # 只有当不是 linux-arm64 交叉编译时，才在宿主机安装 Python
-      if: '! (matrix.os == ''ubuntu-latest'' && matrix.arch == ''arm64'')'
       uses: actions/setup-python@v5
       with:
         python-version: '3.10' # 根据需求可调整版本，推荐使用 3.11 配合 Nuitka
         cache: 'pip'
 
     - name: Install dependencies
-      if: '! (matrix.os == ''ubuntu-latest'' && matrix.arch == ''arm64'')'
       run: |
         python -m pip install --upgrade pip
         pip install nuitka
@@ -66,8 +57,6 @@ jobs:
         " "${{ steps.version.outputs.version }}"
 
     - name: Build with Nuitka
-      # 非 linux-arm64 走原逻辑
-      if: '! (matrix.os == ''ubuntu-latest'' && matrix.arch == ''arm64'')'
       env:
         OS_NAME: ${{ matrix.os }}
       run: |
