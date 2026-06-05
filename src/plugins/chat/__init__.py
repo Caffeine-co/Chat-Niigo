@@ -95,7 +95,10 @@ async def group_chat_(bot: Bot, event: GMsgEvent, will: Will = Depends(get_group
                     msg = Msg([MsgSeg(**seg.model_dump()) for seg in msg])
                     send_msg = await add_space_after_at(msg)
                     raw_msg = str(send_msg)
+
+                    text = "".join(seg.data["text"] for seg in send_msg if seg.type == "text")
                     await asyncio.sleep(len(text)/4)
+
                     send_data = await bot.send_group_msg(group_id=event.group_id, message=send_msg)
                     await record_group_self_msg(
                         int(time.time()),
@@ -105,8 +108,6 @@ async def group_chat_(bot: Bot, event: GMsgEvent, will: Will = Depends(get_group
                         raw_msg
                     )
                     logger.log("CHAT", f"[{event.group_id}] {raw_msg}")
-
-                    text = "".join(seg.data["text"] for seg in send_msg if seg.type == "text")
 
             for new_memory in response.memory_update:
                 await save_user_memory(event.group_id, new_memory.user_id, new_memory.new_memory)
