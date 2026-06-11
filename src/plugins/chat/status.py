@@ -84,7 +84,7 @@ class Will:
 
     async def decrease_after_send(self) -> float:
         async with self.lock:
-            self.current_will = round(self.current_will - will_config["decrease_after_send"], 1)
+            self.current_will = 0.0
             return self.current_will
 
     async def reset_will(self) -> None:

@@ -25,7 +25,6 @@
       "base_per_msg": 5.0,
       "increase_per_at": 50.0,
       "increase_per_reply": 25.0,
-      "decrease_after_send": 75.0,
       "time_coefficient": {
         "wee_hours": 1.0,
         "matinal": 1.0,
