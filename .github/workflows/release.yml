@@ -30,7 +30,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
-        python-version: '3.10' # 根据需求可调整版本，推荐使用 3.11 配合 Nuitka
+        python-version: '3.13' # 根据需求可调整版本，推荐使用 3.11 配合 Nuitka
         cache: 'pip'
 
     - name: Install dependencies
